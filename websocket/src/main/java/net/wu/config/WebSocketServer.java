@@ -75,7 +75,7 @@ public class WebSocketServer {
      * @param message 客户端发送过来的消息*/
     @OnMessage
     public void onMessage(String message, Session session) {
-        log.info("用户消息:"+userId+",报文:"+message);
+        log.info("用户消息,id:"+userId+",报文:"+message);
         //可以群发消息
         //消息保存到数据库、redis
         if(StringUtils.isNotBlank(message)){
@@ -89,8 +89,8 @@ public class WebSocketServer {
                 if(StringUtils.isNotBlank(toUserId)&&webSocketMap.containsKey(toUserId)){
                     webSocketMap.get(toUserId).sendMessage(jsonObject.toJSONString());
                 }else{
-                    log.error("请求的userId:"+toUserId+"不在该服务器上");
                     //否则不在这个服务器上，发送到mysql或者redis
+                    log.error("请求的userId:"+toUserId+"不在该服务器上");
                 }
             }catch (Exception e){
                 e.printStackTrace();
@@ -137,5 +137,10 @@ public class WebSocketServer {
 
     public static synchronized void subOnlineCount(){
         WebSocketServer.onlineCount --;
+    }
+
+    // 提供外部可调用的方法获取userID,用于查找某个用户的文件上传信息
+    public String getUserId(){
+        return userId;
     }
 }

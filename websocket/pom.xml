@@ -7,7 +7,6 @@
     <groupId>net.wu</groupId>
     <artifactId>websocket</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -54,11 +53,6 @@
             <version>2.8.0</version>
         </dependency>
 
-<!--        &lt;!&ndash; spring-data-jpa &ndash;&gt;-->
-<!--        <dependency>-->
-<!--         <groupId>org.springframework.boot</groupId>-->
-<!--         <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--        </dependency>-->
         <!-- spring-boot-devtools依赖包 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -87,18 +81,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.16</version>
         </dependency>
-
-        <!-- mysql -->
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba</groupId>-->
-<!--            <artifactId>druid</artifactId>-->
-<!--            <version>1.1.12</version>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -128,6 +110,34 @@
             <artifactId>commons-lang</artifactId>
             <version>2.5</version>
         </dependency>
+
+        <!--文件上传-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 </project>
